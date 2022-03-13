@@ -1,5 +1,6 @@
 import Header from 'components/organisms/Header';
 import SearchResults from 'components/organisms/SearchResults';
+import { server } from 'config';
 
 const JobList = ({ searchResults }) => {
   return (
@@ -14,7 +15,7 @@ export async function getServerSideProps({ query }) {
 
   const { location, keyword } = query;
 
-  const response = await fetch("http://localhost:3000/api/jobList");
+  const response = await fetch(`${server}/api/jobList`);
   const jobList = await response.json();
 
   if (location || keyword) {

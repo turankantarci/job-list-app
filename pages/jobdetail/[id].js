@@ -1,5 +1,6 @@
 import Header from 'components/organisms/Header';
 import JobDetailSection from 'components/organisms/JobDetailSection';
+import { server } from 'config';
 
 const JobDetail = ({ jobDetail }) => {
     return (
@@ -12,7 +13,7 @@ const JobDetail = ({ jobDetail }) => {
 
 export async function getServerSideProps({ query }) {
 
-    const response = await fetch("http://localhost:3000/api/jobDetail", {
+    const response = await fetch(`${server}/api/jobDetail`, {
         method: "POST",
         body: JSON.stringify(query)
     });
