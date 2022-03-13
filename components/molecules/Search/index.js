@@ -23,7 +23,7 @@ const Search = () => {
         <form onSubmit={handleSubmit}>
             <div className="d-flex justify-content-between">
                 <div className="flex-1 p-2">
-                    <Input type="text" name="location" id="location" labelText="Lokasyon" placeholder="Şehir" onChange={handleChange} />
+                    <Input type="text" name="location" id="location" labelText="Lokasyon" placeholder="İl veya ilçe" onChange={handleChange} />
                 </div>
                 <div className="flex-1 p-2">
                     <Input type="text" name="keyword" id="keyword" labelText="Anahtar Kelime" placeholder="Firma adı veya pozisyon" onChange={handleChange} />

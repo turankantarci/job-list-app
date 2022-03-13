@@ -1,43 +1,43 @@
 import Header from 'components/organisms/Header';
-import React from 'react';
+import SearchResults from 'components/organisms/SearchResults';
 
-const JobList = ({ searchResult }) => {
-
+const JobList = ({ searchResults }) => {
   return (
     <>
       <Header />
+      <SearchResults searchResults={searchResults} />
     </>
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query }) {
 
-  const { query } = context;
-  const { location: locationQuery, keyword: keywordQuery } = query;
+  const { location, keyword } = query;
 
-  const response = await fetch(`http://localhost:3000/api/jobList`, query);
+  const response = await fetch("http://localhost:3000/api/jobList");
   const jobList = await response.json();
 
-  if (locationQuery || keywordQuery) {
+  if (location || keyword) {
 
     const filteredJoblist = jobList.filter((item) => {
       const cityName = String(item.cityName).toLocaleLowerCase("tr-TR");
+      const townName = String(item.townName).toLocaleLowerCase("tr-TR");
       const companyName = String(item.companyName).toLocaleLowerCase("tr-TR");
       const positionName = String(item.positionName).toLocaleLowerCase("tr-TR");
 
-      if (locationQuery && keywordQuery) {
-        if (cityName.includes(locationQuery) && (companyName.includes(keywordQuery) || positionName.includes(keywordQuery))) return item;
-      } else if (locationQuery && !keywordQuery) {
-        if (cityName.includes(locationQuery)) return item;
+      if (location && keyword) {
+        if ((cityName.includes(location) || townName.includes(location)) && (companyName.includes(keyword) || positionName.includes(keyword))) return item;
+      } else if (location && !keyword) {
+        if (cityName.includes(location) || townName.includes(location)) return item;
       } else {
-        if (companyName.includes(keywordQuery) || positionName.includes(keywordQuery)) return item;
+        if (companyName.includes(keyword) || positionName.includes(keyword)) return item;
       }
 
     });
 
     return {
       props: {
-        searchResult: filteredJoblist
+        searchResults: filteredJoblist
       }
     }
 
@@ -45,7 +45,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        searchResult: jobList
+        searchResults: jobList
       }
     }
 

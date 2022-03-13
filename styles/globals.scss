@@ -13,12 +13,32 @@ h1 {
   font-size: $heading;
 }
 
+h2 {
+  font-size: $heading2;
+}
+
+small{
+  font-size: $smallSize;
+}
+
 .text-center {
   text-align: center;
 }
 
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
 .d-flex {
   display: flex;
+
+  &.flex-column {
+    flex-direction: column;
+  }
 
   &.justify-content-start {
     justify-content: flex-start;
@@ -77,6 +97,26 @@ h1 {
   margin: $margin3;
 }
 
+.mt-1 {
+  margin-top: $margin;
+}
+
 .mt-3 {
   margin-top: $margin3;
+}
+
+.ml-3 {
+  margin-left: $margin3;
+}
+
+.mb-2 {
+  margin-bottom: $margin2;
+}
+
+.mb-3 {
+  margin-bottom: $margin3;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

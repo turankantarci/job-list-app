@@ -7,20 +7,22 @@ $color-3: #e0e0e0;
 $color-4: #eeeeee;
 $color-5: #f5f5f5;
 $color-6: #fafafa;
+$color-7: #e7e7e7;
 
 // Spaces
 $padding: 15px;
 $padding2: $padding / 1.5;
-$padding3: $padding / 3;
+$padding3: $padding / 2;
 $margin: 15px;
 $margin2: $margin / 1.5;
 $margin3: $margin / 2;
 
 // Font Sizes
 $fontSize: 16px;
-$fontSize2: $fontSize / 1.5;
+$fontSize2: $fontSize * 1.2;
+$smallSize: $fontSize * 0.9;
 $heading: $fontSize * 2;
-$heading2: $heading * 1.5;
+$heading2: $fontSize * 1.5;
 
 // General
 $borderRadius: 5px;
