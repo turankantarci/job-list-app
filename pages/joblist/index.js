@@ -1,17 +1,19 @@
+import Header from 'components/organisms/Header';
 import React from 'react';
 
-const JobList = (props) => {
-  console.log("props", props)
+const JobList = ({ searchResult }) => {
 
   return (
-    <div>JobList</div>
+    <>
+      <Header />
+    </>
   )
 }
 
 export async function getServerSideProps(context) {
 
   const { query } = context;
-  const {location: locationQuery, keyword: keywordQuery} = query;
+  const { location: locationQuery, keyword: keywordQuery } = query;
 
   const response = await fetch(`http://localhost:3000/api/jobList`, query);
   const jobList = await response.json();
@@ -23,13 +25,19 @@ export async function getServerSideProps(context) {
       const companyName = String(item.companyName).toLocaleLowerCase("tr-TR");
       const positionName = String(item.positionName).toLocaleLowerCase("tr-TR");
 
-      const filterCondition = cityName.includes(locationQuery) || companyName.includes(keywordQuery) || positionName.includes(keywordQuery);
-      if (filterCondition) return item;
+      if (locationQuery && keywordQuery) {
+        if (cityName.includes(locationQuery) && (companyName.includes(keywordQuery) || positionName.includes(keywordQuery))) return item;
+      } else if (locationQuery && !keywordQuery) {
+        if (cityName.includes(locationQuery)) return item;
+      } else {
+        if (companyName.includes(keywordQuery) || positionName.includes(keywordQuery)) return item;
+      }
+
     });
 
     return {
       props: {
-        filteredJoblist
+        searchResult: filteredJoblist
       }
     }
 
@@ -37,7 +45,7 @@ export async function getServerSideProps(context) {
 
     return {
       props: {
-        jobList
+        searchResult: jobList
       }
     }
 

@@ -1,4 +1,4 @@
-import jobList from '../../mockData/jobList';
+import jobList from 'mockData/jobList';
 
 const handler = (req, res) => {
     res.status(200).json(jobList)
