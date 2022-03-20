@@ -10,7 +10,7 @@ const AppInformation = () => {
             Lokasyon için örnek aramalar:
         </div>
         <div className="mt-3">
-            İl ve ilçe yazarak lokasyon araması yapılabilir. Örn; istanbul, çengelköy, büyükdere, muğla, sarıyer, izmir, adana, çanakkale
+            İl veya ilçe yazarak lokasyon araması yapılabilir. Örn; istanbul, çengelköy, büyükdere, muğla, sarıyer, izmir, adana, çanakkale
         </div>
         <div className="mt-1 font-weight-bold">
             Anahtar kelime için örnek aramalar:

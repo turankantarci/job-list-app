@@ -26,7 +26,7 @@ const jobDetail = [
         "companyName": "Melodi Müzik Market",
         "companySlogan": "Enstrüman satış ve kiralama",
         "positionName": "Enstrüman Satış Elemanı",
-        "positionDescription": "Müzik enstrümanları konusunda bilgi sayibi satış elemanı aranıyor.",
+        "positionDescription": "Müzik enstrümanları konusunda bilgi sahibi satış elemanı aranıyor.",
         "image": "https://img.freepik.com/free-photo/electric-guitar-body-close-up-view-is-wood-floor_186202-5713.jpg?w=826",
         "cityName": "İstanbul",
         "townName": "Beşiktaş",
